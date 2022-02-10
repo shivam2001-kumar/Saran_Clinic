@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\superadmin;
+use App\Http\Controllers\SuperadminController;
 use App\Http\Controllers\SupervisorCont;
 use App\Http\Controllers\StockmanagerController;
 use App\Http\Controllers\recptionist;
@@ -21,31 +21,31 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/superadmin',[superadmin::class,'index']);
-Route::post('/superadminlogin',[superadmin::class,'superadminlogin']);
+Route::get('/superadmin',[SuperadminController::class,'index']);
+Route::post('/superadminlogin',[SuperadminController::class,'superadminlogin']);
 //admin route with middleware
 Route::group(['middleware'=>['admin']],function(){
 
-Route::get('/superadmin/supdash',[superadmin::class,'dashboard']);
-Route::get('/superadmin/addsupervisor',[superadmin::class,'addsupervisor']);
-Route::post('/superadmin/addsupercode',[superadmin::class,'addsupercode']);
-Route::get('/superadmin/viewsupervisor',[superadmin::class,'viewsupervisor']);
-Route::get('/superadmin/updatesupervisor/{id}/{status}',[superadmin::class,'updatesupervisor']);
-Route::get('/superadmin/delsupervisor/{id}',[superadmin::class,'delsupervisor']);
-Route::get('/superadmin/addpatient',[superadmin::class,'addpatient']);
-Route::post('/superadmin/addpatientcode',[superadmin::class,'addpatientcode']);
-Route::get('/superadmin/viewpatient',[superadmin::class,'viewpatient']);
-Route::get('/superadmin/editpatient/{id}',[superadmin::class,'editpatient']);
-Route::post('/superadmin/editpostpatientcode',[superadmin::class,'editpostpatientcode']);
-Route::get('/superadmin/delpatient/{id}',[superadmin::class,'delpatient']);
-Route::get('/superadmin/reception',[superadmin::class,'reception']);
-Route::post('/superadmin/fetchprec',[superadmin::class,'fetchprec']);
-Route::post('/superadmin/fetchmed',[superadmin::class,'fetchmed']);
-Route::post('/superadmin/addreceipt',[superadmin::class,'addreceipt']);
-Route::get('/superadmin/patient_reciepts/{id}',[superadmin::class,'patient_reciepts']);
-Route::get('/superadmin/patient_rec_medcs/{id}/{pid}',[superadmin::class,'patient_rec_medcs']);
-Route::post('/superadmin/outer_med_data',[superadmin::class,'outer_med_data']);
-Route::get('/superadmin/getmobdata/{mob}',[superadmin::class,'getmobdata']);
+Route::get('/superadmin/supdash',[SuperadminController::class,'dashboard']);
+Route::get('/superadmin/addsupervisor',[SuperadminController::class,'addsupervisor']);
+Route::post('/superadmin/addsupercode',[SuperadminController::class,'addsupercode']);
+Route::get('/superadmin/viewsupervisor',[SuperadminController::class,'viewsupervisor']);
+Route::get('/superadmin/updatesupervisor/{id}/{status}',[SuperadminController::class,'updatesupervisor']);
+Route::get('/superadmin/delsupervisor/{id}',[SuperadminController::class,'delsupervisor']);
+Route::get('/superadmin/addpatient',[SuperadminController::class,'addpatient']);
+Route::post('/superadmin/addpatientcode',[SuperadminController::class,'addpatientcode']);
+Route::get('/superadmin/viewpatient',[SuperadminController::class,'viewpatient']);
+Route::get('/superadmin/editpatient/{id}',[SuperadminController::class,'editpatient']);
+Route::post('/superadmin/editpostpatientcode',[SuperadminController::class,'editpostpatientcode']);
+Route::get('/superadmin/delpatient/{id}',[SuperadminController::class,'delpatient']);
+Route::get('/superadmin/reception',[SuperadminController::class,'reception']);
+Route::post('/superadmin/fetchprec',[SuperadminController::class,'fetchprec']);
+Route::post('/superadmin/fetchmed',[SuperadminController::class,'fetchmed']);
+Route::post('/superadmin/addreceipt',[SuperadminController::class,'addreceipt']);
+Route::get('/superadmin/patient_reciepts/{id}',[SuperadminController::class,'patient_reciepts']);
+Route::get('/superadmin/patient_rec_medcs/{id}/{pid}',[SuperadminController::class,'patient_rec_medcs']);
+Route::post('/superadmin/outer_med_data',[SuperadminController::class,'outer_med_data']);
+Route::get('/superadmin/getmobdata/{mob}',[SuperadminController::class,'getmobdata']);
 
 });
 
@@ -70,7 +70,10 @@ Route::post('/stockmanager/save-stock',[StockmanagerController::class,'saveStock
 Route::get('/stockmanager/view-stock',[StockmanagerController::class,'viewstock']);
 Route::get('/stockmanager/update-stock/{id}',[StockmanagerController::class,'updatestock']);
 Route::post('/stockmanager/saveupdate-stock',[StockmanagerController::class,'saveUpdateStock']);
-Route::get('/stockmanager/gen_billid',[StockmanagerController::class,'gen_billid']);
+Route::get('/stockmanager/genrate_bill',[StockmanagerController::class,'genrate_bill']);
+Route::post('/stockmanager/post_bill',[StockmanagerController::class,'post_bill']);
+Route::get('/stockmanager/bulkdata',[StockmanagerController::class,'bulk_data']);
+Route::post('/stockmanager/save_bulk_data',[StockmanagerController::class,'save_bulk_data']);
 
 });
 

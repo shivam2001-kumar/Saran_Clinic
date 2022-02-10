@@ -6,70 +6,46 @@
 
         <section>
             <div class="container">
-                @if(Session::has('flash_message'))
+            @if(Session::has('flash_message'))
                 <div class="alert {!! session('status') !!}" role="alert"><em> {!! session('flash_message') !!}</em>
                 </div>
                 @endif
                 <div class="card">
                     <div class="card-header bg-info">
-                        <h3 class="text-light">Generate Bill ID</h3>
+                        <h3 class="text-light">genrate Bill</h3>
                     </div>
                     <div class="card-body">
-                        <form action="{{url('/stockmanager/save-stock')}}" class="needs-validation" id="" method="POST" enctype="multipart/form-data">
+                        <form action="{{url('/stockmanager/post_bill')}}" class="needs-validation" id="" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
-                                <div class="col-md-4">
+                            <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="medcode">Bill Id:</label>
-                                        <input type="text" class="form-control" name="bill_id" id="bill_id"
-                                            placeholder="Enter Bill Idd" required>
+                                        <label for="medcode">Bill No .  :</label>
+                                        <input type="text" class="form-control" name="billno" id="billno"
+                                            placeholder="Enter Bill No. " required>
                                         @error('medcode')
                                         <span class="text-danger">
-                                            {{$bill_id}}
+                                            {{$message}}
                                         </span>
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="medname">Title:</label>
-                                        <input type="text" class="form-control" name="title" id="title"
-                                            placeholder="Enter title " required>
-                                        @error('medname')
+                                        <label for="medcode">Bill ammount:</label>
+                                        <input type="number" min="1.00" max="10000000.00" step="0.1" class="form-control" name="billamt" id="billamt"
+                                            placeholder="Enter Bill Ammount" required>
+                                        @error('medcode')
                                         <span class="text-danger">
                                             {{$message}}
                                         </span>
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="medname">Total Ammount:</label>
-                                        <input type="text" class="form-control" name="total_price" id="total_price"
-                                            placeholder="Enter Price" required>
-                                        @error('medname')
-                                        <span class="text-danger">
-                                            {{$message}}
-                                        </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="medname">Upload Bill Pic:</label>
-                                        <input type="file" class="form-control" name="bill_pic" id="total_price"
-                                            placeholder="Enter Price" required>
-                                        @error('medname')
-                                        <span class="text-danger">
-                                            {{$message}}
-                                        </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="medname">Paid Ammount:</label>
-                                        <input type="text" class="form-control" name="paid_ammonut" id="total_price"
+                                        <label for="paidamt">Paid Ammount:</label>
+                                        <input type="text" class="form-control" name="paidamt" id="paidamt"
                                             placeholder="Enter Paid Ammount" required>
                                         @error('medname')
                                         <span class="text-danger">
@@ -78,12 +54,37 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="medunit">Date:</label>
-                                        <input type="date" class="form-control" name="bill_date" id="bill_date"
-                                            placeholder="Choose Date " required>
-                                        @error('medunit')
+                                        <label for="dueamt">Due Ammount:</label>
+                                        <input type="text" class="form-control" name="dueamt" id="dueamt"
+                                            placeholder="Enter Due Ammount" required>
+                                        @error('medname')
+                                        <span class="text-danger">
+                                            {{$message}}
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="billdate">Bill Date:</label>
+                                        <input type="date" class="form-control" name="billdate" id="billdate"
+                                             required>
+                                        @error('')
+                                        <span class="text-danger">
+                                            {{$message}}
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="billpic">Bill Picture:</label>
+                                        <input type="file" class="form-control" name="billpic" id="billpic"
+                                            placeholder="" required>
+                                        @error('')
                                         <span class="text-danger">
                                             {{$message}}
                                         </span>
@@ -92,10 +93,9 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="price">Description:</label>
-                                        <input type="text" class="form-control" name="description" id="description"
-                                            placeholder="Enter Description" required>
-                                        @error('price')
+                                        <label for="description">Description:</label>
+                                 <textarea class="form-control" id="desc" name="desc"rows="3"></textarea>
+                                        @error('medquantity')
                                         <span class="text-danger">
                                             {{$message}}
                                         </span>
@@ -120,15 +120,15 @@
         <script>
         $(document).ready(function() {
             $('input').keyup(function() {
-                var type = $("#medtype option:selected").text();
-                var medunit = $("#medunit").val();
-                var medquantity = $("#medquantity").val();
-                var tq = medunit * medquantity;
-                $("#totalquantity").val(tq + " " + type);
-                var price = $("#price").val();
-                var tp = medquantity * price;
-                $("#totalprice").val(tp);
+                // var type = $("#medtype option:selected").text();
+                var billamt = $("#billamt").val();
+                 var paidamt = $("#paidamt").val();
+                 var tq = billamt - paidamt;
+                $("#dueamt").val(tq);
+                
             });
         });
         </script>
         @endsection
+
+        
