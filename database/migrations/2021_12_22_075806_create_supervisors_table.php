@@ -24,7 +24,7 @@ class CreateSupervisorsTable extends Migration
             $table->string('address',100);
             $table->string('qualification',100);
             $table->string('password',70);
-            $table->string('is_del',50);
+            $table->boolean('is_del',50);
             $table->string('status',50);
             $table->timestamps();
         });

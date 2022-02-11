@@ -24,7 +24,7 @@ class CreateBulkDatasTable extends Migration
             $table->string('medquantity');
             $table->string('totalquantity');
             $table->string('totalprice');
-            $table->string('is_del')->default(0);
+            $table->boolean('is_del')->default(0);
             $table->timestamps();
         });
     }
