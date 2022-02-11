@@ -172,6 +172,10 @@
                         <label for="exampleFormControlTextarea1">Suggestion</label>
                          <textarea class="form-control" id="exampleFormControlTextarea1" name="sug"rows="3" required ></textarea>
                         </div>
+                        <div class="form-group col-12">
+                        <label for="exampleFormControlTextarea1">Disease</label>
+                         <textarea class="form-control" id="exampleFormControlTextarea1" name="disease"rows="3" required ></textarea>
+                        </div>
                         <button type="button" class="btn btn-danger" id="btn_save_med">Submit</button> 
                     </div>
                      

@@ -14,7 +14,7 @@ use App\Models\tbl_reciepts_medicine;
 use App\Models\tbl_receipt_outermed;
 use Carbon\Carbon;
 use MongoDB\BSON\UTCDateTime;
-class superadmin extends Controller
+class SuperadminController extends Controller
 {
     //
     function index()
@@ -301,6 +301,7 @@ else{
         $tr->weight=$req->get('weight');
         $tr->age=$req->get('age');
         $tr->suggestion=$req->get('sug');
+        $tr->disease=$req->get('disease');
         $tr->is_del=false;
         $tr->total=0;
         if($tr->save())
@@ -396,4 +397,5 @@ function outer_med_data(Request $req)
         
      }
     
+
 }

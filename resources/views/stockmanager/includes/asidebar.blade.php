@@ -32,10 +32,11 @@
                 <li class="nav-item"> <a class="nav-link" href="{{url('/stockmanager/view-stock')}}">View</a></li>
               </ul>
             </div>
+           
           </li>
           
           
-          
+        
           <!-- <li class="nav-item">
             <a class="nav-link" href="pages/forms/basic_elements.html">
               <i class="icon-file menu-icon"></i>
@@ -61,16 +62,15 @@
             </a>
           </li>-->
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+            <a class="nav-link" data-toggle="collapse" href="#bulk_bill" aria-expanded="false" aria-controls="auth">
               <i class="icon-file menu-icon"></i>
               <span class="menu-title">Bull Medicine</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="auth">
+            <div class="collapse" id="bulk_bill">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{url('/stockmanager/gen_billid')}}">Genrate New Bill Id</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/login-2.html">Add Medicines </a></li>
-
+                <li class="nav-item"> <a class="nav-link" href="{{url('/stockmanager/genrate_bill')}}">Genrate Bill</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{url('/stockmanager/bulkdata')}}">Bulk Data</a></li>
               </ul>
             </div>
           </li>
