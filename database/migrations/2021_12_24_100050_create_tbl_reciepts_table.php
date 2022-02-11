@@ -20,7 +20,7 @@ class CreateTblRecieptsTable extends Migration
             $table->string('weight',50);
             $table->string('age',10);
             $table->text('suggestion',200);
-            $table->text('disease',200);
+            $table->text('suggestion',200);
             $table->boolean('is_del');
             $table->string('total',10)->null();
             $table->timestamps();
