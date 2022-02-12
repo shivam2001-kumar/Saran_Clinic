@@ -78,6 +78,9 @@
               <a class="dropdown-item preview-item">               
                <i class="icon-head"></i> Profile
               </a>
+              <a class="dropdown-item preview-item" href="#" data-toggle="modal" data-target="#cpass">
+              <i class="fas fa-key"></i> Change Password
+              </a>
               <a class="dropdown-item preview-item" href="/logout">
                   <i class="icon-inbox"></i> Logout
               </a>

@@ -32,6 +32,9 @@
               <a class="dropdown-item preview-item">               
                   <i class="icon-head"></i> Profile
               </a>
+              <a href="#" data-toggle="modal" data-target="#stockmodal"  class="dropdown-item preview-item">
+              <i class="fa fa-key"></i> Change Password
+              </a>
               <a class="dropdown-item preview-item" href="{{url('logout')}}">
                   <i class="icon-inbox"></i> Logout
               </a>

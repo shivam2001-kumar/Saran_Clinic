@@ -5,6 +5,7 @@ use App\Http\Controllers\SuperadminController;
 use App\Http\Controllers\SupervisorCont;
 use App\Http\Controllers\StockmanagerController;
 use App\Http\Controllers\recptionist;
+use App\Http\Controllers\ChangepasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,7 @@ Route::get('/superadmin/patient_reciepts/{id}',[SuperadminController::class,'pat
 Route::get('/superadmin/patient_rec_medcs/{id}/{pid}',[SuperadminController::class,'patient_rec_medcs']);
 Route::post('/superadmin/outer_med_data',[SuperadminController::class,'outer_med_data']);
 Route::get('/superadmin/getmobdata/{mob}',[SuperadminController::class,'getmobdata']);
+Route::post('/superadmin/changepwd',[SuperadminController::class,'changepwd']);
 
 });
 
@@ -74,6 +76,7 @@ Route::get('/stockmanager/genrate_bill',[StockmanagerController::class,'genrate_
 Route::post('/stockmanager/post_bill',[StockmanagerController::class,'post_bill']);
 Route::get('/stockmanager/bulkdata',[StockmanagerController::class,'bulk_data']);
 Route::post('/stockmanager/save_bulk_data',[StockmanagerController::class,'save_bulk_data']);
+Route::post('/stockmanager/stockchangepwd',[ChangepasswordController::class,'stockchangepwd']);
 
 });
 
@@ -91,6 +94,7 @@ Route::get('/recptionist/reciepts/{rid}/{pid}',[recptionist::class,'todayreciept
 Route::post('/recptionist/generateptbill',[recptionist::class,'generateptbill']);
 Route::get('/recptionist/printreceipt/{rec_id}',[recptionist::class,'printreceipt']);
 Route::get('/recptionist/bill/{receipt_id}',[recptionist::class,'bill']);
+Route::post('recptionist/chpass',[ChangepasswordController::class,'stockchangepwd']);
 });
 
 
