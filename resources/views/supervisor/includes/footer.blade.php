@@ -5,12 +5,14 @@
             <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Developed By : <a href="http://www.softproindia.in/">Softpro India Computer Techologies (P) Ltd.</a></span>
           </div>
         </footer>
+        
         <!-- partial -->
       </div>
       <!-- main-panel ends -->
     </div>
     <!-- page-body-wrapper ends -->
   </div>
+
   <!-- container-scroller -->
   @include('supervisor.includes.foot')
   

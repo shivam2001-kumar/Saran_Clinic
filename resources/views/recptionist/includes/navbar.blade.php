@@ -78,6 +78,9 @@
               <a class="dropdown-item preview-item">               
                   <i class="icon-head"></i> Profile
               </a>
+              <a href="#" data-toggle="modal" data-target="#recptmodal" class="dropdown-item preview-item">
+                  <i class="fa fa-key"></i> Change password
+              </a>
               <a class="dropdown-item preview-item">
                   <i class="icon-inbox"></i> Logout
               </a>

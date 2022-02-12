@@ -3,6 +3,9 @@
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
+          @if(Session::has('msg'))
+              <div class="alert alert-danger" role="alert"><em> {!! session('msg') !!}</em></div>
+            @endif 
             <div class="col-sm-12 mb-4 mb-xl-0">
               <h4 class="font-weight-bold text-dark">Hi, welcome to Admin Dashboard</h4>
               <p class="font-weight-normal mb-2 text-muted">{{ $tdate }}</p>

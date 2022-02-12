@@ -81,6 +81,9 @@
               <a class="dropdown-item preview-item">
                   <i class="icon-inbox"></i> Logout
               </a>
+              <a href="#" class="dropdown-item preview-item">
+              <i class="fa fa-key"></i> Change Password
+              </a>
             </div>
           </li>
           <li class="nav-item dropdown mr-4 d-lg-flex d-none">

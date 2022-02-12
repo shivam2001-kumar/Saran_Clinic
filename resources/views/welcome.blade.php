@@ -99,42 +99,26 @@ h1{
 }
 
     </style>
-    
-  
     <title>Saran Clinic : : Dashboard</title>
   </head>
   <body>
-
-
-    <div class="container-fluid" id="outer">
-
-
         <div class="row section main-row">
             <div class="col-sm-12 sec-main">
                 <div class="container-fluid">
-
-
-                    <div class="row">
+                <div class="row">
                         <div class="col-sm-12 text-center">
                             <img src="disc/img/logo1.png" style="height:15em;">
                         </div>
                     </div>
-    
-
-
                 <div class="row">
                     <div class="col-sm-12">
                         <h1 class="text-center">Who You Are...?</h1>
                     </div>
                 </div>
 
-
-
-            
-
-
-
+                
               <div class="row">
+             
                   <div class="col-sm-1"></div>
                   <div class="col-sm-10">
                       <div class="row">
@@ -148,9 +132,6 @@ h1{
                                 </a>
                             </div>
                       </div>
-    
-                  
-                      
                       <div class="col-sm-4">
                         <div class="card my-card">
                             <a href="{{url('/supervisor/login/101')}}">
@@ -183,26 +164,15 @@ h1{
                 <div class="col-sm-1"></div>
                 <div class="col-sm-10">
                     <div class="row">
-
-          
-
                     </div>
                 </div>
                 <div class="col-sm-1"></div>
-
-              </div>
-
-             
-			 
+                </div>
 			 <div class="row">
 				<div class="col-sm-12 footer p-0">
 					<p>© Copyright 2021 Designed & Developed By <a href="https://softproindia.in" target="_black">Softpro India Computer Technologies (P) Ltd.</a></p>
 				</div>
 			 </div>
-
-
-
-
             </div>
             </div>
         </div>
