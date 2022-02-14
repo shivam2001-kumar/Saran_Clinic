@@ -144,7 +144,7 @@ class StockmanagerController extends Controller
 
             public function save_bulk_data(Request $req)
             {
-                $bulkdata=new bulk_data();
+            $bulkdata=new bulk_data();
             $bulkdata->billno=$req->get('billno');
             $bulkdata->medcode=$req->get('medcode');
             $bulkdata->medname=$req->get('medname');
@@ -168,6 +168,15 @@ class StockmanagerController extends Controller
             Session::flash('flash_message','Data Not Save!');
             return redirect('/stockmanager/bulkdata');
         }
+            }
+
+            public function stockchangepwd(Request $req)
+            {
+
+         $op=md5($req->op);
+         $np=$req->np;
+         $cp=$req->cp;
+         $data=supervisor::find(Session::get('spadmin'));
             }
 
 

@@ -12,6 +12,7 @@ use App\Models\tbl_reciept;
 use App\Models\MedicineStock;
 use App\Models\tbl_reciepts_medicine;
 use App\Models\tbl_receipt_outermed;
+use App\Models\superadmin;
 use Carbon\Carbon;
 use MongoDB\BSON\UTCDateTime;
 class SuperadminController extends Controller
@@ -395,6 +396,34 @@ function outer_med_data(Request $req)
        }
        //return "welcome";
 
+     }
+
+     //Admin  change pasowrd
+     public function changepwd(Request $req)
+     {
+         $op=md5($req->op);
+         $np=$req->np;
+         $cp=$req->cp;
+         $data=superadmin::find(Session::get('spadmin'));
+         if($np==$cp)
+         {
+             if($op==$data->password){
+                    $data->password=md5($np);
+                    $res=$data->save();
+                    session::flash('msg','password Changed Successfully !!! Login with new Password');
+                    return redirect('logout');
+                }
+                else{
+                    session::flash('msg','password does\'t match');
+                    return redirect('superadmin/supdash');
+                }
+
+        }
+        else{
+            session::flash('msg','Confirm password and new password does\'t match');
+            return redirect('superadmin/supdash');
+        }
+        return redirect('superadmin/supdash');
      }
 
 
