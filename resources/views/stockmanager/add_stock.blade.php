@@ -73,7 +73,7 @@
                                     <div class="form-group">
                                         <label for="price">Price:</label>
                                         <input type="number" class="form-control" name="price" id="price"
-                                            placeholder="Enter per unit price" required>
+                                            placeholder="Enter per unit price" min="1.0" max="10000.00" step="0.1" required>
                                         @error('price')
                                         <span class="text-danger">
                                             {{$message}}

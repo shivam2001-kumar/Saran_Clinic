@@ -56,7 +56,7 @@ class StockmanagerController extends Controller
     }
     public function viewstock()
     {
-        $stock=MedicineStock::where('isdel',false)->get();
+        $stock=MedicineStock::where('is_del',false)->get();
         return view('stockmanager.view_stock',['stock'=>$stock]);
     }
     public function saveUpdateStock(Request $req)
