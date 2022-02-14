@@ -91,7 +91,7 @@ class StockmanagerController extends Controller
     public function updatestock($id)
     {
         Log::info('id'.json_encode($id));
-        $stock=MedicineStock::where('isdel',false)->where('id',$id)->first();
+        $stock=MedicineStock::where('is_del',false)->where('id',$id)->first();
         return view('stockmanager.update_stock',['stock'=>$stock]);
     }
 
@@ -144,7 +144,11 @@ class StockmanagerController extends Controller
 
             public function save_bulk_data(Request $req)
             {
-            $bulkdata=new bulk_data();
+                $medcode=MedicineStock::where('is_del',false)
+                ->where('medcode',$req->medcode)
+                ->first('medcode');
+              //  return $medcode; die();
+                $bulkdata=new bulk_data();
             $bulkdata->billno=$req->get('billno');
             $bulkdata->medcode=$req->get('medcode');
             $bulkdata->medname=$req->get('medname');
@@ -157,18 +161,59 @@ class StockmanagerController extends Controller
             $tq=floatval($req->get('totalquantity'));
             $am=floatval($req->get('totalprice'));
             $perqtamt=$am/$tq;
-        if($bulkdata->save())
-        {
-            Session::flash('status','alert-success');
-            Session::flash('flash_message','Data Successfully Save!');
-            return redirect('/stockmanager/bulkdata');
-        }
-        else{
-            Session::flash('status','alert-danger');
-            Session::flash('flash_message','Data Not Save!');
-            return redirect('/stockmanager/bulkdata');
-        }
+            if($bulkdata->save())
+            {
+                
+                if(strtolower($medcode->medcode)==strtolower($req->medcode))
+                {
+
+                        //Update
+
+                }
+                else
+                {
+                     // new insert in stock
+                     
+                     $data = new MedicineStock;
+                     $data->medcode=$req->get('medcode');
+                     $data->medname=$req->get('medname');
+                     $data->medtype=$req->get('medtype');
+                     $data->medunit=$req->get('medunit');
+                     $data->price=$req->get('price');
+                     $data->medquantity=$req->get('medquantity');
+                     $totalqty=explode(' ',$req->get('totalquantity'));
+                     $data->totalquantity=$totalqty[0];
+                     $data->totalprice=$req->get('totalprice');
+                     $tq=floatval($req->get('totalquantity'));
+                     $am=floatval($req->get('totalprice'));
+             
+                     $perqtamt=$am/$tq;
+              // return $perqtamt;
+                     $data->perqtamount=$perqtamt;
+                     $data->is_del=false;
+                    // Log::info('data'.json_encode($data));
+                     if($data->save())
+                     {
+                         Session::flash('status', 'alert-success');
+                         Session::flash('flash_message', 'Medicine Successfully Add in stock and bulk!!!');
+                         
+                     }
+                     else
+                     {
+                         Session::flash('status', 'alert-danger');
+                         Session::flash('flash_message', 'Medicine Not Add in stock!!');
+                         
+                     }
+
+
+                }
             }
+            else
+            {
+                // bulk not save
+            }
+        
+        }
 
             public function stockchangepwd(Request $req)
             {
