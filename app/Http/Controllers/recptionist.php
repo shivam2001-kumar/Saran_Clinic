@@ -63,7 +63,7 @@ class recptionist extends Controller
                 //exit();
                 $med_id=$req->medicine[$i];
                 $ttprice=$req->ta[$i];
-                DB::statement("update medicine_stocks set totalquantity=(totalquantity-$med_qty), totalprice=(totalprice-$ttprice) where id='$med_id'");
+                DB::statement("update medicine_stocks set totalquantity='(totalquantity-$med_qty)', totalprice='(totalprice-$ttprice)' where id='$med_id'");
                array_push($data,['receipt_id'=>$req->receipt_id,'med_id'=>$req->medicine[$i],'quantity'=>$req->qty[$i],'per_qty_amt'=>$req->peramt[$i],'net_amt'=>$req->ta[$i],'created_at'=>now(),'updated_at'=>now()]);
             }
             receipt_bill::insert($data);
