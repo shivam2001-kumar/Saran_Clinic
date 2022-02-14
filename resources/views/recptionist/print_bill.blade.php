@@ -128,7 +128,7 @@ hr {
     <title>Saran Clinic : : Bill</title>
   </head>
   <body>
-    
+
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
 <div class="page-content container">
@@ -156,19 +156,14 @@ hr {
     </div>
 
     <div class="container px-0">
-        <div class="row mt-4">
+        <div class="row">
             <div class="col-12 col-lg-12">
-                <div class="row">
-                    <div class="col-12">
-                        
-                    </div>
-                </div>
                 <!-- .row -->
 
                 <hr class="row brc-default-l1 mx-n1 mb-4" />
 
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-6">
                         <div>
                             <span class="text-sm text-grey-m2 align-middle">Patient :</span>
                             <span class="text-600 text-110 text-blue align-middle">{{$p_r_data->pname}}</span>
@@ -185,7 +180,7 @@ hr {
                     </div>
                     <!-- /.col -->
 
-                    <div class="text-95 col-sm-6 align-self-start d-sm-flex justify-content-end">
+                    <div class="text-95 col-6 align-self-start d-sm-flex justify-content-end">
                         <hr class="d-sm-none" />
                         <div class="text-grey-m2">
                             <div class="mt-1 mb-2 text-secondary-m1 text-600 text-125">
@@ -203,25 +198,25 @@ hr {
                 </div>
 
                 <div class="mt-4">
-                    <div class="row text-600 text-white bgc-default-tp1 py-25">
-                        <div class="d-none d-sm-block col-1">#</div>
-                        <div class="col-9 col-sm-5">Description</div>
-                        <div class="d-none d-sm-block col-4 col-sm-2">Qty</div>
-                        <div class="d-none d-sm-block col-sm-2">Unit Price</div>
+                    <div class="row text-600 text-white bgc-default-tp1 py-20">
+                        <div class="col-1">#</div>
+                        <div class="col-5">Description</div>
+                        <div class="col-2">Qty</div>
+                        <div class=" col-2">Unit Price</div>
                         <div class="col-2">Amount</div>
                     </div>
                     @php $i=1; @endphp
                         @foreach($bill_data as $billdata)
                     <div class="text-95 text-secondary-d3">
                         <div class="row mb-2 mb-sm-0 py-25">
-                            <div class="d-none d-sm-block col-1">{{$i}}</div>
-                            <div class="col-9 col-sm-5">{{$billdata->medname}}</div>
-                            <div class="d-none d-sm-block col-2">{{$billdata->quantity}}</div>
-                            <div class="d-none d-sm-block col-2 text-95">{{$billdata->per_qty_amt}}</div>
+                            <div class="col-1">{{$i}}</div>
+                            <div class="col-5">{{$billdata->medname}}</div>
+                            <div class="col-2">{{$billdata->quantity}}</div>
+                            <div class="col-2 text-95">{{$billdata->per_qty_amt}}</div>
                             <div class="col-2 text-secondary-d2">{{$billdata->net_amt}}</div>
                         </div>
 
-                        
+
                     </div>
                     @endforeach
 
@@ -249,7 +244,7 @@ hr {
                             <td>2</td>
                             <td class="text-95">$10</td>
                             <td class="text-secondary-d2">$20</td>
-                        </tr> 
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -283,10 +278,10 @@ hr {
 
                             <div class="row my-2 align-items-center bgc-primary-l3 p-2">
                                 <div class="col-7 text-right">
-                                    Total Amount
+                                   <b> Total Amount</b>
                                 </div>
                                 <div class="col-5">
-                                    <span class="text-150 text-success-d3 opacity-2">&#8377; {{$p_r_data->total}}</span>
+                                    <span class="text-100 text-success-d3 opacity-2">&#8377; {{$p_r_data->total}}</span>
                                 </div>
                             </div>
                         </div>
@@ -296,7 +291,7 @@ hr {
 
                     <div>
                         <span class="text-secondary-d1 text-105">Thank you for purchaces with us -- </span>
-                        
+
                     </div>
                 </div>
             </div>

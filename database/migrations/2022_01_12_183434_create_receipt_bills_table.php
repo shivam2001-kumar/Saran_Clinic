@@ -18,8 +18,8 @@ class CreateReceiptBillsTable extends Migration
             $table->bigInteger('receipt_id');
             $table->bigInteger('med_id');
             $table->string('quantity',10);
-            $table->string('per_qty_amt',10);
-            $table->string('net_amt',10);
+            $table->decimal('per_qty_amt',12,2);
+            $table->decimal('net_amt',12,2);
            $table->timestamps();
         });
     }
