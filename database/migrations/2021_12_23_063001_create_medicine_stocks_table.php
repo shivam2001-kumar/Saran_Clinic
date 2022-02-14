@@ -21,9 +21,10 @@ class CreateMedicineStocksTable extends Migration
             $table->string('medunit');
             $table->string('price');
             $table->string('medquantity');
+            $table->string('perqtamount',20);
             $table->string('totalquantity');
             $table->string('totalprice');
-            $table->string('is_del')->default(0);
+            $table->boolean('is_del')->default(0);
             $table->timestamps();
         });
     }
