@@ -39,13 +39,13 @@ class StockmanagerController extends Controller
         $perqtamt=$am/$tq;
  // return $perqtamt;
  $data->perqtamount=$perqtamt;
-        $data->isdel=false;
-        Log::info('data'.json_encode($data));
+        $data->is_del=false;
+       // Log::info('data'.json_encode($data));
         if($data->save())
         {
             Session::flash('status', 'alert-success');
             Session::flash('flash_message', 'Medicine Successfully Add!!!');
-            return redirect('/stockmanager/add-stock'); 
+            return redirect('/stockmanager/add-stock');
         }
         else
         {
@@ -172,12 +172,12 @@ class StockmanagerController extends Controller
 
             public function stockchangepwd(Request $req)
             {
-            
+
          $op=md5($req->op);
          $np=$req->np;
          $cp=$req->cp;
          $data=supervisor::find(Session::get('spadmin'));
             }
 
-   
+
 }

@@ -17,7 +17,7 @@ class recptionist extends Controller
     //
     function  dashboard()
     {
-       
+
         return view('recptionist.dashboard');
     }
     // Leatest Reciept
@@ -26,7 +26,7 @@ class recptionist extends Controller
     {
         $tr=tbl_reciept::join('patients','patients.id','tbl_reciepts.patient_id')
         ->where('tbl_reciepts.is_del',false)->where('tbl_reciepts.date',date('Y-m-d'))->get();
-        //return $tr;  
+        //return $tr;
         return view('recptionist.todayreciept',['data'=>$tr]);
     }
 
@@ -63,12 +63,12 @@ class recptionist extends Controller
                 //exit();
                 $med_id=$req->medicine[$i];
                 $ttprice=$req->ta[$i];
-                DB::statement("update medicine_stocks set totalquantity=(totalquantity-$med_qty), totalprice=(totalprice-$ttprice) where id='$med_id'");
+                DB::statement("update medicine_stocks bset totalquantity=(totalquantity-$med_qty), totalprice=(totalprice-$ttprice) where id='$med_id'");
                array_push($data,['receipt_id'=>$req->receipt_id,'med_id'=>$req->medicine[$i],'quantity'=>$req->qty[$i],'per_qty_amt'=>$req->peramt[$i],'net_amt'=>$req->ta[$i],'created_at'=>now(),'updated_at'=>now()]);
             }
             receipt_bill::insert($data);
             tbl_reciept::where('reciept_id',$req->receipt_id)->update((['total'=>$req->sumtotal]));
-         
+
            return redirect("/recptionist/printreceipt/$req->receipt_id");
         }
 
@@ -77,9 +77,9 @@ class recptionist extends Controller
 
 
     function printreceipt($rec_id){
-        
+
         $patient_receipt=patient::join('tbl_reciepts','patients.id','tbl_reciepts.patient_id')->where('tbl_reciepts.reciept_id',$rec_id)->first();
-        
+
         $tbl_rec_med=tbl_reciepts_medicine::join('medicine_stocks','tbl_reciepts_medicines.id','medicine_stocks.id')->where('tbl_reciepts_medicines.reciept_id',$patient_receipt->reciept_id)->get();
         $tbl_rec_outmed=tbl_receipt_outermed::where('receipt_id',$patient_receipt->reciept_id)->first();
        // return $tbl_rec_outmed;
@@ -89,7 +89,7 @@ class recptionist extends Controller
         $outmed_name=explode('@$',$tbl_rec_outmed->outer_med_name);
         $outmed_dose=explode('@$',$tbl_rec_outmed->outer_med_dose);
         $outmed_time=explode('@$',$tbl_rec_outmed->outer_med_time);
-        
+
        }
        else
        {
@@ -97,7 +97,7 @@ class recptionist extends Controller
        $outmed_dose[0]='No Medicine Written';
        $outmed_time[0]='No Medicine Written';
        }
-        
+
         return view('recptionist.print_reciept',["patient"=>$patient_receipt,"medicine"=>$tbl_rec_med,"medout"=>$tbl_rec_outmed,"outmed_name"=>$outmed_name,"outmed_dose"=>$outmed_dose,"outmed_time"=>$outmed_time]);
     }
 

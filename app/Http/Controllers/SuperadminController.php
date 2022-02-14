@@ -49,7 +49,7 @@ function superadminlogin(Request $req)
     else
     {
       //  Log::info('else part');
-        Session::flash('msg', 'Invalid user'); 
+        Session::flash('msg', 'Invalid user');
         return view('superadmin.login');
      //   return "error";
     }
@@ -60,8 +60,8 @@ function superadminlogin(Request $req)
 // super admin dashboard
 function dashboard()
 {
-    
-    
+
+
     $tdate=Carbon::now()->format('d-M-Y h:m a');
    //return $tdate;
     $todaysale=tbl_reciept::where('date',date('Y-m-d'))->sum('total');
@@ -252,11 +252,11 @@ else{
         }
      }
 
-     // Reception 
+     // Reception
      function reception()
      {
          $m=patient::where('is_del','false')->get('contactno');
-         $med=MedicineStock::where('isdel','0')->get();
+         $med=MedicineStock::where('is_del','0')->get();
         // var_dump($med);
         // return;
 
@@ -276,7 +276,7 @@ else{
      {
          log::info('fetchmed'.json_encode($req->all()));
         $med=$req->get('me');
-       
+
        // $medi=MedicineStock::where('isdel','0')->get();
         //log::info('medicine'.json_encode($medi));
         $medicine=MedicineStock::where('isdel','0')
@@ -289,7 +289,7 @@ else{
        ]);
      }
 
-     // Add receipt 
+     // Add receipt
 
      function addreceipt(Request $req)
      {
@@ -307,18 +307,18 @@ else{
         $tr->total=0;
         if($tr->save())
         {
-            
+
             $reciept_id=$tr->id;
             $data=[];
-            
-            
+
+
             for($i=0;$i<count($req->medicine);$i++)
             {
                // echo $req->medicine[$i]."<br/>";
                 //echo $req->dose[$i];
                 array_push($data,array('reciept_id'=>$reciept_id,'id'=>$req->medicine[$i],'dose'=>$req->dose[$i],'time'=>$req->dtime[$i],'is_del'=>false,'created_at'=>now(),'updated_at'=>now()));
             }
-            
+
             if(tbl_reciepts_medicine::insert($data))
             {
                 session::flash('msg','receipt generated');
@@ -326,7 +326,7 @@ else{
                 //return redirect('superadmin/reception');
             }
 
-            
+
         }
      }
 
@@ -395,7 +395,7 @@ function outer_med_data(Request $req)
            echo '0';
        }
        //return "welcome";
-        
+
      }
 
      //Admin  change pasowrd
@@ -425,6 +425,6 @@ function outer_med_data(Request $req)
         }
         return redirect('superadmin/supdash');
      }
-    
+
 
 }

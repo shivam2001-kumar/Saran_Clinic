@@ -13,7 +13,7 @@ class TblReceiptOutermeds extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_recipt_outermeds', function (Blueprint $table) {
+        Schema::create('tbl_receipt_outermeds', function (Blueprint $table) {
             $table->increments('rec_outermed_id');
             $table->BigInteger('patient_id');
             $table->BigInteger('receipt_id');
