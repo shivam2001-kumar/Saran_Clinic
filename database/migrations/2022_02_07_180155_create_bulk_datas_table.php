@@ -20,10 +20,10 @@ class CreateBulkDatasTable extends Migration
             $table->string('medname');
             $table->string('medtype');
             $table->string('medunit');
-            $table->string('price');
+            $table->decimal('price',12,2);
             $table->string('medquantity');
             $table->string('totalquantity');
-            $table->string('totalprice');
+            $table->decimal('totalprice',12,2);
             $table->boolean('is_del')->default(0);
             $table->timestamps();
         });

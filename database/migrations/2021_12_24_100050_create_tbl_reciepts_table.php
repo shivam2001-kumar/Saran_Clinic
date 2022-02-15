@@ -22,7 +22,7 @@ class CreateTblRecieptsTable extends Migration
             $table->text('suggestion',200);
             $table->text('disease',200);
             $table->boolean('is_del');
-            $table->string('total',10)->null();
+            $table->decimal('total',12,2)->null();
             $table->timestamps();
         });
     }

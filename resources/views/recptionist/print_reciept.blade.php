@@ -14,19 +14,19 @@
   <section class="mt-5">
     <div id="printarea">
    <div class="container">
-   <div class="row">
-   <div class="col-4"><img src="{{url('disc/img/logo1.png')}}" height="100px" width="100px"/></div>
+   <div class="row my-5">
+   {{-- <div class="col-4"><img src="{{url('disc/img/logo1.png')}}" height="100px" width="100px"/></div>
    <div class="col-4"><h1 class="text-primary">Saran Clinic</h1></div>
-   <div class="col-4"><b>Dr.</b><br/> <b>mob:</b> +91 xxxxx-xxxxx <br/></div>
+   <div class="col-4"><b>Dr.</b><br/> <b>mob:</b> +91 xxxxx-xxxxx <br/></div> --}}
    </div>
    </div>
     <div class="container">
-        
+
    <div class="row">
-   <div class="col-3"><b>Name: </b> {{$patient->pname}}</div>
-   <div class="col-3"><b>Age : </b> {{$patient->age}}</div>
-   <div class="col-3"><b>Weight : </b> {{$patient->weight}}</div>
-   <div class="col-3"><b>Date : </b> {{$patient->created_at}}</div>
+   <div class="col-4"><b>Name: </b> {{$patient->pname}}</div>
+   <div class="col-2"><b>Age : </b> {{$patient->age}}</div>
+   <div class="col-2"><b>Weight : </b> {{$patient->weight}}</div>
+   <div class="col-4"><b>Date : </b> {{$patient->created_at}}</div>
    </div>
    </div>
    <hr/>
@@ -35,23 +35,26 @@
    <div class="col-4"><b>Reciept_id : </b> {{$patient->reciept_id}}</div>
    <div class="col-4"><b>Patient_id : </b> {{$patient->patient_id}}</div>
    <div class="col-4"><b>Mobile No : </b> {{$patient->contactno}}</div>
-   
+
    </div>
    </div>
  <hr/>
- 
 
-   
+
+
     <div class="container" style="border:1px solid">
-	<h5 class="ms-3 mt-3">R<sub>x</sub></h5>
-	<table class="table table-border ">
+	<h5 class="ms-2 mt-3">R<sub>x</sub></h5>
+    <div class="ms-5">
+	<table class="table table-border">
   <thead>
     <tr>
       <th scope="col">SN.</th>
       <th scope="col">Medicine Name</th>
       <th scope="col">Dose</th>
       <th scope="col">Timing</th>
-	  
+      <th scope="col">Disease</th>
+
+
     </tr>
   </thead>
   <tbody>
@@ -62,17 +65,20 @@
       <td>{{$m->medname}}</td>
       <td>{{$m->dose}}</td>
       <td>{{$m->time}}</td>
+      <td rowspan="{{ $i }}">{{$patient->disease}}</td>
+
     </tr>
    @endforeach
   </tbody>
 </table>
-	 
-	<h5 class="m-5">Outer Medicine</h5>
 
-   
-    
+
+	<h5 class="my-3">Outer Medicine</h5>
+
+
+
 	<table class="table table-border ">
- 
+
   <tbody>
       @php $c=count($outmed_name); @endphp
       @for($i=0; $i<$c; $i++)
@@ -84,22 +90,23 @@
     </tr>
 
       @endfor
-     
-      
-    
-  
+
+
+
+
   </tbody>
 </table>
+    </div>
 </div>
     <div class="container" style="border:1px solid  ">
-	<h5 class="ms-3 mt-2">Suggestion</h5>
+	<h5 class="ms-3 my-2">Suggestion</h5>
     <p class="ms-5">{{$patient->suggestion}}</p>
 	</div>
     </div><!-- Print div close-->
     <div class="container mb-5 mt-2">
 	<input type="button" class="btn btn-primary col-sm-12" value="Print" onclick="print()"/>
-    </div> 
-    <a href="{{url('recptionist/bill/')}}/{{$patient->reciept_id}}" target="_blank" id="billprint">If bill not print automatically click here ....</a> 
+    </div>
+    <a href="{{url('recptionist/bill/')}}/{{$patient->reciept_id}}" target="_blank" id="billprint">If bill not print automatically click here ....</a>
 	</section>
     <!-- Optional JavaScript; choose one of the two! -->
 
@@ -114,8 +121,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
     <script>
       $(document).ready(function() {
-      
-        
+
+
         $('#billprint')[0].click();
       });
       </script>

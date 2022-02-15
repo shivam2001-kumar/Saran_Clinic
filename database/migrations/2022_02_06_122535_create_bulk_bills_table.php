@@ -16,9 +16,9 @@ class CreateBulkBillsTable extends Migration
         Schema::create('bulk_bills', function (Blueprint $table) {
             $table->id();
             $table->string('billno');
-            $table->string('billamount');
-            $table->string('piadamount');
-            $table->string('dueamount');
+            $table->decimal('billamount',12,2);
+            $table->decimal('piadamount',12,2);
+            $table->decimal('dueamount',12,2);
             $table->string('billdate');
             $table->string('billpic');
             $table->string('description');
