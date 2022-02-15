@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\MedicineStock;
 use App\Models\bulk_bill;
 use App\Models\bulk_data;
-
+use DB;
 use Session;
 use Log;
 
@@ -90,7 +90,7 @@ class StockmanagerController extends Controller
     }
     public function updatestock($id)
     {
-        Log::info('id'.json_encode($id));
+      
         $stock=MedicineStock::where('is_del',false)->where('id',$id)->first();
         return view('stockmanager.update_stock',['stock'=>$stock]);
     }
@@ -156,7 +156,7 @@ class StockmanagerController extends Controller
             $bulkdata->medunit=$req->get('medunit');
             $bulkdata->price=$req->get('price');
             $bulkdata->medquantity=$req->get('medquantity');
-            $bulkdata->totalquantity=$req->get('totalquantity');
+            $bulkdata->totalquantity=$req->get('medquantity');;
             $bulkdata->totalprice=$req->get('totalprice');
             $tq=floatval($req->get('totalquantity'));
             $am=floatval($req->get('totalprice'));
@@ -167,7 +167,19 @@ class StockmanagerController extends Controller
                 if(strtolower($medcode->medcode)==strtolower($req->medcode))
                 {
 
-                        //Update
+                    $newmedqty=$req->get('medquantity');
+                    $newtotalqty=$tq;
+                    $newtotalprise=$am;
+                   $rest=DB::statement("update medicine_stocks set medquantity=(medquantity+$newmedqty), totalquantity=(totalquantity+$newtotalqty),totalprice=(totalprice+$newtotalprise) where medcode='$medcode->medcode'");
+                    if($rest==1)
+                    {
+                        Session::flash('msg','Medicine Successfully Add in stock');
+                    }
+                    else
+                    {
+                        Session::flash('msg','Medicine Not Add in stock');
+                    }
+                    
 
                 }
                 else
@@ -212,6 +224,8 @@ class StockmanagerController extends Controller
             {
                 // bulk not save
             }
+
+            return redirect('stockmanager/view-stock');
         
         }
 
