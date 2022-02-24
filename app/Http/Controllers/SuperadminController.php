@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PatientReq;
+use App\Http\Requests\SupervisorReq;
 use Illuminate\Http\Request;
 use DB;
 use Session;
@@ -99,7 +101,7 @@ public function get_city($stid)
  }
 
  // ADD super admin code
- function addsupercode(Request $req)
+ function addsupercode(SupervisorReq $req)
  {
 //return $req;
 $filename='Image'.time()."_".rand().".".$req->pic->extension();
@@ -177,7 +179,7 @@ else{
         return view('superadmin.addpatient');
     }
 
-    function addpatientcode(Request $req)
+    function addpatientcode(PatientReq $req)
     {
         //return $req;
         $ps=new patient();

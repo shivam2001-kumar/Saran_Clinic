@@ -1,5 +1,5 @@
 @extends('superadmin.includes.admin_master')
-@section('main-container') 
+@section('main-container')
 <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
@@ -27,7 +27,7 @@
                         <div class="form-group">
                           <label for="teacher-name">Supervisor Name:</label>
                           <input type="text" class="form-control" name="name" id="teacher-name" placeholder="Enter supervisor name">
-                          @error('teacher')
+                          @error('name')
                             <span class="text-danger">
                                 {{$message}}
                             </span>
@@ -37,22 +37,22 @@
                       <div class="dropdown col-md-6">
                         <label for="exampleFormControlSelect1">Role</label>
                     <select class="form-control form-control-lg mt-2 h-50"  name="role" id="exampleFormControlSelect1">
-                    <option>-- Select Role --</option>  
+                    <option value="">-- Select Role --</option>
                     <option value="101">Stoke Manager</option>
                            <option value="102">Receptionist</option>
                           <!-- <option value="103">Compounder</option>-->
                     </select>
-                        @error('address')
+                        @error('role')
                           <span class="text-danger">
                               {{$message}}
                           </span>
                         @enderror
-                        
-                        </div> 
+
+                        </div>
                       <div class="col-md-4">
                         <div class="form-group">
                           <label for="email">Email:</label>
-                          <input type="email" class="form-control" name="email" id="email" placeholder="Enter email address">
+                          <input type="email" class="form-control" name="email" id="email" placeholder="Enter email address" autocomplete="off">
                           @error('email')
                             <span class="text-danger">
                                 {{$message}}
@@ -64,7 +64,7 @@
                         <div class="form-group">
                           <label for="contact">Contact Number:</label>
                           <input type="text" class="form-control" name="contactno" id="contact" placeholder="Enter contact number">
-                          @error('contact')
+                          @error('contactno')
                             <span class="text-danger">
                                 {{$message}}
                             </span>
@@ -99,13 +99,13 @@
                           </div>
                         </div>
                       </div>
-                     
-                     
-                     
+
+
+
                       <div class="form-group col-md-6">
                         <label for="pin_code">Pin Code:</label>
                         <input type="number" class="form-control" name="pincode" id="pin_code" placeholder="Enter pin code">
-                        @error('pin_code')
+                        @error('pincode')
                           <span class="text-danger">
                               {{$message}}
                           </span>
@@ -131,7 +131,7 @@
                             <option value="12th">12th</option>
                             <option value="10th">10th</option>
                           </select>
-                          @error('city')
+                          @error('highest_qualification')
                             <span class="text-danger">
                                 {{$message}}
                             </span>
@@ -175,7 +175,7 @@
           $('#state').html(data);
       }
       });
-      
+
     });
 
     // function for get city with state Id
@@ -194,4 +194,4 @@
     });
   });
 </script>
-@endsection 
+@endsection

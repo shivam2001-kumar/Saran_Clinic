@@ -1,5 +1,5 @@
 @extends('superadmin.includes.admin_master')
-@section('main-container') 
+@section('main-container')
 <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
@@ -16,7 +16,7 @@
               <div class="alert alert-danger" role="alert"><em> {!! session('msg') !!}</em></div>
             @endif
             @if(session()->has('msg'))
-    <div class="alert alert-{{ session('msg') }}"> 
+    <div class="alert alert-{{ session('msg') }}">
     {!! session('message.content') !!}
     </div>
 @endif
@@ -31,20 +31,20 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="teacher-name">Patient Name:</label>
-                          <input type="text" class="form-control" name="pname" id="teacher-name" placeholder="Enter supervisor name" required/>
-                          @error('teacher')
+                          <input type="text" class="form-control" name="pname" id="teacher-name" placeholder="Enter patient name" required/>
+                          @error('pname')
                             <span class="text-danger">
                                 {{$message}}
                             </span>
                           @enderror
                         </div>
                       </div>
-                      
+
                       <div class="col-md-6">
                          <div class="form-group">
                           <label for="email">Email:</label>
                           <input type="email" class="form-control" name="pemail" id="email" placeholder="Enter email address" required>
-                          @error('email')
+                          @error('pemail')
                             <span class="text-danger">
                                 {{$message}}
                             </span>
@@ -56,18 +56,18 @@
                           <label for="contact">Contact Number:</label>
                           <input type="text" class="form-control"  onkeyup="validmob(this)" name="contactno" id="contact" placeholder="Enter contact number" pattern="[6-9]{1}[0-9]{9}" title="Enter Mobile No Only">
                           <span class="text-danger" id="sp"></span>
-                          @error('contact')
+                          @error('contactno')
                             <span class="text-danger" >
                                 {{$message}}
                             </span>
                           @enderror
                         </div>
                       </div>
-                     
+
                       <div class="form-group col-md-6">
                         <label for="pin_code">Enter Age:</label>
                         <input type="text" class="form-control" name="age" id="age" placeholder="Enter Age" pattern="[0-9]{1,3}" min='1' max='120'>
-                        @error('pin_code')
+                        @error('age')
                           <span class="text-danger">
                               {{$message}}
                           </span>
@@ -76,7 +76,7 @@
                       <div class="form-group col-md-6">
                         <label for="pin_code">Enter DOB:</label>
                         <input type="date" class="form-control" name="dob" id="dob" placeholder="Enter DOB" required>
-                        @error('pin_code')
+                        @error('dob')
                           <span class="text-danger">
                               {{$message}}
                           </span>
@@ -91,7 +91,7 @@
                           </span>
                         @enderror
                       </div>
-                     
+
                       <div class="form-group col-md-12">
                         <input type="submit" class="form-control btn btn-info" id="pbtn"  />
                       </div>
@@ -106,7 +106,7 @@
 </div>
 
 
-@endsection 
+@endsection
 <script>
   function validmob(a)
   {
@@ -132,8 +132,8 @@
     });
 
   }
-  
+
  }
-  
+
 
 </script>
